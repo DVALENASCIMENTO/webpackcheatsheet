@@ -4,21 +4,30 @@
     "emoji": "⚙️",
     "title": "O que é Webpack?",
     "color": "blue",
-    "description": "Webpack é uma ferramenta poderosa chamada 'empacotador de módulos' (module bundler), usada para agrupar e otimizar os diversos arquivos que compõem uma aplicação web moderna. Ele pega todos os seus arquivos — como JavaScript, CSS, imagens e até fontes — e combina em um ou mais arquivos otimizados que podem ser carregados rapidamente pelo navegador. Isso melhora a performance da aplicação e permite usar recursos avançados, como modularização, carregamento assíncrono e transformação de código (transpilers)."
+    "commands": [
+      {
+        "cmd": "Webpack é uma ferramenta chamada 'empacotador de módulos' (module bundler)",
+        "desc": "Ele pega todos os arquivos do seu projeto — JavaScript, CSS, imagens e outros — e combina em bundles otimizados para produção. Isso ajuda a reduzir o tempo de carregamento do site e facilita o gerenciamento de dependências."
+      },
+      {
+        "cmd": "Transpilers, modularização e carregamento assíncrono",
+        "desc": "Webpack permite usar recursos como transpilers (por exemplo, Babel para ES6+), dividir o código em módulos reutilizáveis e fazer carregamento assíncrono para carregar partes só quando necessário."
+      }
+    ]
   },
   {
     "number": 2,
     "emoji": "📦",
     "title": "Como instalar o Webpack?",
     "color": "green",
-    "steps": [
+    "commands": [
       {
-        "command": "npm init -y",
-        "description": "Este comando cria um arquivo package.json padrão no diretório atual, inicializando seu projeto Node.js com as configurações básicas. É importante para que o npm possa gerenciar as dependências do seu projeto."
+        "cmd": "npm init -y",
+        "desc": "Inicializa um projeto Node.js, criando automaticamente um arquivo package.json, que lista as dependências e scripts do projeto."
       },
       {
-        "command": "npm install --save-dev webpack webpack-cli",
-        "description": "Instala o Webpack e sua interface de linha de comando (CLI) como dependências de desenvolvimento. Isso significa que o Webpack será usado apenas durante o desenvolvimento e construção do projeto, não em produção diretamente."
+        "cmd": "npm install --save-dev webpack webpack-cli",
+        "desc": "Instala o Webpack e sua interface de linha de comando (CLI) como dependências de desenvolvimento. O Webpack CLI permite executar comandos como 'webpack build'."
       }
     ]
   },
@@ -27,48 +36,62 @@
     "emoji": "🗂️",
     "title": "Estrutura básica do projeto",
     "color": "orange",
-    "description": "Para organizar seu projeto, crie uma pasta chamada 'src' onde você colocará o código fonte da aplicação. O arquivo principal JavaScript geralmente é chamado de 'index.js'. Essa estrutura ajuda o Webpack a identificar onde começar a análise e empacotamento.",
-    "example": {
-      "src/index.js": "console.log('Olá, Webpack!');"
-    }
+    "commands": [
+      {
+        "cmd": "src/index.js",
+        "desc": "Arquivo de entrada principal onde começa a aplicação. Exemplo de conteúdo: console.log('Olá, Webpack!')."
+      },
+      {
+        "cmd": "dist/",
+        "desc": "Diretório de saída onde os arquivos otimizados gerados pelo Webpack (bundles) são salvos."
+      }
+    ]
   },
   {
     "number": 4,
     "emoji": "📝",
     "title": "Arquivo de configuração (webpack.config.js)",
     "color": "purple",
-    "description": "Embora o Webpack funcione com configurações padrão, o arquivo 'webpack.config.js' permite customizar o processo de build. Nele você define o ponto de entrada (entry), onde o Webpack começa a juntar os módulos, o ponto de saída (output), que define onde e com qual nome será salvo o arquivo final, além do modo (development ou production) e plugins/loaders.",
-    "example": "module.exports = {\n  entry: './src/index.js',\n  output: {\n    filename: 'bundle.js',\n    path: __dirname + '/dist'\n  },\n  mode: 'development'\n};"
+    "commands": [
+      {
+        "cmd": "module.exports = { entry: './src/index.js', output: { filename: 'bundle.js', path: __dirname + '/dist' }, mode: 'development' };",
+        "desc": "Define as configurações principais: entry (ponto de entrada), output (ponto de saída), e modo (development ou production)."
+      },
+      {
+        "cmd": "entry e output",
+        "desc": "O 'entry' indica onde o Webpack começa a processar. O 'output' define o nome e a pasta onde os arquivos finais são gerados."
+      }
+    ]
   },
   {
     "number": 5,
     "emoji": "🚀",
     "title": "Rodando o Webpack",
     "color": "teal",
-    "steps": [
+    "commands": [
       {
-        "command": "npx webpack",
-        "description": "Executa o Webpack utilizando a configuração padrão ou a que estiver especificada no arquivo 'webpack.config.js'. Ele cria o bundle, ou seja, o arquivo final que será usado no navegador."
+        "cmd": "npx webpack",
+        "desc": "Executa o Webpack com a configuração padrão (webpack.config.js). Gera o bundle final, pronto para uso no navegador."
       },
       {
-        "command": "npx webpack --mode production",
-        "description": "Executa o Webpack em modo produção, ativando otimizações como minificação (redução do tamanho do arquivo), tree-shaking (remoção de código não utilizado) e outras técnicas que tornam o código final mais leve e rápido."
+        "cmd": "npx webpack --mode production",
+        "desc": "Executa em modo produção, aplicando otimizações como minificação e remoção de código não utilizado."
       }
     ]
   },
   {
     "number": 6,
     "emoji": "🔌",
-    "title": "Loaders: como usar CSS e outros arquivos",
+    "title": "Loaders",
     "color": "red",
-    "description": "Loaders são transformadores que permitem que o Webpack entenda e processe arquivos que não são JavaScript puro, como CSS, imagens, fontes, arquivos TypeScript, entre outros. Eles convertem esses arquivos para um formato que o Webpack consegue incluir no bundle.",
-    "example": {
-      "webpack.config.js": "module.exports = {\n  module: {\n    rules: [\n      {\n        test: /\\.css$/,\n        use: ['style-loader', 'css-loader']\n      }\n    ]\n  }\n};"
-    },
-    "steps": [
+    "commands": [
       {
-        "command": "npm install --save-dev style-loader css-loader",
-        "description": "Instala os loaders necessários para que o Webpack possa processar arquivos CSS, aplicando os estilos diretamente no DOM ou transformando-os em módulos importáveis."
+        "cmd": "npm install --save-dev style-loader css-loader",
+        "desc": "Instala loaders que permitem importar e processar arquivos CSS dentro do JavaScript."
+      },
+      {
+        "cmd": "module: { rules: [ { test: /\\.css$/, use: ['style-loader', 'css-loader'] } ] }",
+        "desc": "Configura o Webpack para usar os loaders ao encontrar arquivos CSS: 'css-loader' processa o CSS e 'style-loader' injeta o CSS no HTML final."
       }
     ]
   },
@@ -77,19 +100,18 @@
     "emoji": "✨",
     "title": "Plugins importantes",
     "color": "yellow",
-    "description": "Plugins são extensões que adicionam funcionalidades avançadas ao processo de build do Webpack, como gerar automaticamente arquivos HTML que incluam o bundle, limpar diretórios antes de cada build e otimizações extras. Eles operam em um nível mais amplo que os loaders.",
-    "examples": [
+    "commands": [
       {
-        "name": "HtmlWebpackPlugin",
-        "description": "Este plugin gera automaticamente um arquivo HTML que inclui o seu bundle JavaScript. Você pode usar um template HTML personalizado e ele cuida de injetar as tags script necessárias, simplificando o gerenciamento dos arquivos.",
+        "cmd": "HtmlWebpackPlugin",
+        "desc": "Gera um arquivo HTML automaticamente e insere os bundles gerados (JavaScript, CSS). Útil para evitar a configuração manual do HTML.",
         "install": "npm install --save-dev html-webpack-plugin",
-        "usage": "const HtmlWebpackPlugin = require('html-webpack-plugin');\n\nmodule.exports = {\n  plugins: [new HtmlWebpackPlugin({template: './src/index.html'})]\n};"
+        "usage": "const HtmlWebpackPlugin = require('html-webpack-plugin'); module.exports = { plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })] };"
       },
       {
-        "name": "CleanWebpackPlugin",
-        "description": "Plugin que limpa automaticamente a pasta de saída ('dist', por exemplo) antes de cada build, evitando que arquivos antigos ou desnecessários fiquem acumulados e causem confusão ou erros.",
+        "cmd": "CleanWebpackPlugin",
+        "desc": "Remove arquivos antigos da pasta de saída antes de cada build, garantindo que apenas o bundle atualizado fique disponível.",
         "install": "npm install --save-dev clean-webpack-plugin",
-        "usage": "const { CleanWebpackPlugin } = require('clean-webpack-plugin');\n\nmodule.exports = {\n  plugins: [new CleanWebpackPlugin()]\n};"
+        "usage": "const { CleanWebpackPlugin } = require('clean-webpack-plugin'); module.exports = { plugins: [new CleanWebpackPlugin()] };"
       }
     ]
   },
@@ -98,24 +120,111 @@
     "emoji": "👀",
     "title": "Modo de Desenvolvimento e Watch Mode",
     "color": "cyan",
-    "description": "No modo de desenvolvimento, o Webpack gera mapas de fonte (source maps), que facilitam a depuração ao permitir que você veja o código original no navegador, em vez do código minificado. O 'watch mode' permite que o Webpack fique de olho nas mudanças nos arquivos fonte e recompila automaticamente quando detecta alterações, agilizando o fluxo de trabalho.",
-    "steps": [
+    "commands": [
       {
-        "command": "webpack --mode development --watch",
-        "description": "Inicia o Webpack no modo desenvolvimento e ativa o watch mode para recompilar automaticamente ao salvar arquivos alterados."
+        "cmd": "webpack --mode development --watch",
+        "desc": "Habilita o modo 'watch', onde o Webpack recompila automaticamente sempre que detecta mudanças nos arquivos fonte, agilizando o desenvolvimento."
+      },
+      {
+        "cmd": "webpack-dev-server",
+        "desc": "Servidor de desenvolvimento que atualiza a página automaticamente ao salvar alterações, criando um fluxo de trabalho mais rápido e dinâmico."
       }
     ]
   },
   {
     "number": 9,
+    "emoji": "🔧",
+    "title": "Configuração Avançada e Performance",
+    "color": "purple",
+    "commands": [
+      {
+        "cmd": "webpack-merge",
+        "desc": "Combina várias configurações em arquivos separados para dev e prod, mantendo o código organizado e limpo."
+      },
+      {
+        "cmd": "Aliases e resolve",
+        "desc": "Permite criar atalhos (aliases) para caminhos de arquivos, facilitando os imports e evitando caminhos relativos complexos."
+      },
+      {
+        "cmd": "dotenv-webpack",
+        "desc": "Carrega variáveis de ambiente do arquivo .env para o JavaScript durante o build, útil para chaves e configurações dinâmicas."
+      },
+      {
+        "cmd": "webpack-bundle-analyzer",
+        "desc": "Gera visualizações gráficas do tamanho dos bundles, ajudando a encontrar gargalos e otimizar a performance."
+      }
+    ]
+  },
+  {
+    "number": 10,
+    "emoji": "🚦",
+    "title": "Otimização e Produção",
+    "color": "red",
+    "commands": [
+      {
+        "cmd": "Code splitting (import())",
+        "desc": "Permite dividir o bundle em partes menores que são carregadas sob demanda, melhorando a performance inicial do site."
+      },
+      {
+        "cmd": "tree shaking",
+        "desc": "Remove automaticamente código não utilizado do bundle, deixando-o menor e mais rápido."
+      },
+      {
+        "cmd": "source-map",
+        "desc": "Cria arquivos de mapeamento para ajudar a depurar erros em produção, ligando o código minificado ao original."
+      },
+      {
+        "cmd": "cache busting",
+        "desc": "Adiciona hashes aos nomes dos arquivos gerados para evitar problemas de cache em navegadores (ex.: bundle.abc123.js)."
+      }
+    ]
+  },
+  {
+    "number": 11,
+    "emoji": "✅",
+    "title": "Boas práticas e integração com frameworks",
+    "color": "gray",
+    "commands": [
+      {
+        "cmd": "Separar configs por ambiente",
+        "desc": "Use webpack-merge para criar arquivos separados para desenvolvimento e produção, facilitando manutenção e clareza."
+      },
+      {
+        "cmd": "Revisar dependências",
+        "desc": "Verifique regularmente loaders e plugins para evitar vulnerabilidades e garantir compatibilidade."
+      },
+      {
+        "cmd": "Documentar configuração",
+        "desc": "Comentar o arquivo webpack.config.js ajuda a manter a configuração clara para equipes e futuras manutenções."
+      },
+      {
+        "cmd": "Integrar com frameworks",
+        "desc": "Webpack funciona perfeitamente com frameworks como React, Vue e Angular, servindo como base para aplicações modernas."
+      }
+    ]
+  },
+  {
+    "number": 12,
     "emoji": "📚",
     "title": "Recursos para estudar mais",
     "color": "gray",
-    "resources": [
-      "Documentação oficial do Webpack: https://webpack.js.org/",
-      "Cursos gratuitos e pagos no Udemy, YouTube e plataformas educacionais especializadas",
-      "Repositórios no GitHub com exemplos práticos de projetos usando Webpack",
-      "Artigos e blogs focados em otimizações avançadas e melhores práticas"
+    "commands": [
+      {
+        "cmd": "Documentação oficial",
+        "desc": "Acesse https://webpack.js.org/ para informações completas e exemplos."
+      },
+      {
+        "cmd": "Cursos online e vídeos",
+        "desc": "Plataformas como Udemy e YouTube oferecem tutoriais completos e práticos."
+      },
+      {
+        "cmd": "Exemplos práticos no GitHub",
+        "desc": "Busque repositórios reais para ver aplicações do Webpack em projetos do mundo real."
+      },
+      {
+        "cmd": "Artigos e blogs especializados",
+        "desc": "Leia blogs sobre Webpack para aprender dicas de otimização, melhores práticas e casos de uso."
+      }
     ]
   }
 ]
